@@ -6,20 +6,17 @@ $(function(){
 
 	const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja` ;
 
-	
-	$('.btn-area__button').on('click', function(){
-		fetch(url)
-			.then(response => response.json())
-			.then(data => {
-				console.log(data);
-			})
-			.catch(error => {
-				console.error('エラー：', error);
-			});
-	});
 
-	// function fetchData(){
-	// 	const res =
+	async function fetchData(){
+		try{
+			const res = await fetch(url);
+			if(!res.ok) throw new Error(`HTTP error status: ${res.status}`)
+			const data = await res.json(); 
+			console.log('取得成功', data);
+		} catch (e){
+			console.error(e);
+		}
+	}
 
-	// }
+	fetchData();
 });
