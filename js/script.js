@@ -10,21 +10,7 @@ $(function(){
 			const data = await fetchData(lat, lon);
 			console.log('取得成功', data);
 
-			// 名前
-			const $resultName = $('.js-result-name');
-			$resultName.text(`今の${data.name}の天気`);			
-
-			// 気温
-			const $resultTemp = $('.js-result-temp');
-			$resultTemp.text(`${data.main.temp}℃`);
-
-			// 天気アイコン
-			const $resultIcon = $('.js-result-icon');
-			const iconCode = data.weather[0].icon;
-			const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
-			$resultIcon.attr('src', iconUrl);
-
+			displayResult(data);
 		})
 
 		$('.js-click-btn2').on('click', async ()=> {
@@ -34,20 +20,7 @@ $(function(){
 			const data = await fetchData(lat, lon);
 			console.log('取得成功', data);
 
-			// 名前
-			const $resultName = $('.js-result-name');
-			$resultName.text(`今の恵比寿の天気`);	
-
-			// 気温
-			const $resultTemp = $('.js-result-temp');
-			$resultTemp.text(`${data.main.temp}℃`);
-
-			// 天気アイコン
-			const $result = $('.js-result-icon');
-			const iconCode = data.weather[0].icon;
-			const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
-			$result.attr('src', iconUrl);
+			displayResult(data);
 		})
 	}
 
@@ -65,6 +38,24 @@ $(function(){
 		} catch (e){
 			console.error(e);
 		}
+	}
+
+	// データ表示
+	function displayResult(data){
+			// 名前
+			const $resultName = $('.js-result-name');
+			$resultName.text(`今の恵比寿の天気`);	
+
+			// 気温
+			const $resultTemp = $('.js-result-temp');
+			$resultTemp.text(`${data.main.temp}℃`);
+
+			// 天気アイコン
+			const $resultIcon = $('.js-result-icon');
+			const iconCode = data.weather[0].icon;
+			const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+			$resultIcon.attr('src', iconUrl);
 	}
 
 });
