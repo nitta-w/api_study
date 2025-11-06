@@ -80,7 +80,6 @@ em {
  * Base（子ページ含めた共通のベーススタイル）
  *
  ************************************************************************/
-
 :root {
   --base-width: 375; /* 基準幅 */
   --max-width: 640; /* 最大幅 */
@@ -99,14 +98,20 @@ body{
   font-weight: 300;
 }
 main{
-	width: 640px;
+	width: 100%;
 	margin: 0 auto;
 	background-color: #fff;
 	padding: 2rem;
 	font-size: clamp(10px, 1.5625vw, 10px);
+  font-size: 1rem;
 }
 h1{
 	margin: 0;
+}
+@media screen and (min-width:640px) {
+main{
+	width: 640px;
+}
 }
 
 
@@ -184,11 +189,41 @@ h1{
 /************************************
  * XXページ
  ************************************/
-.pg-xxxxxxxx .sec-fv {}
-
-
 
 /* main */
-.btn-area__button{
-	margin: 2.5rem auto;
+.btn-area{
+  width: 100%;
+	margin: 1.5rem auto;  
+}
+button{
+  appearance: none;       /* ブラウザ独自の見た目をリセット */
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 2% 5%;
+  font-size: 1rem;
+  width: 100%;
+}
+button:hover{
+  background-color: #48484a;
+  border: 1px solid #48484a;
+  color: #fff;
+}
+.result{
+  width: 100%;
+  background-color: #7baade;
+  border-radius: .5rem;
+  padding: 3%;
+  color: #fff;
+}
+.result__weather{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
 }
