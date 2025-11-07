@@ -21,6 +21,8 @@ $(function(){
 			console.log('取得成功', data);
 
 			displayResult(data);
+			const $resultName = $('.js-result-name'); // 恵比寿のデータの地域名が三田だったので恵比寿に上書き
+			$resultName.text(`今の恵比寿の天気`);	
 		})
 	}
 
@@ -42,20 +44,20 @@ $(function(){
 
 	// データ表示
 	function displayResult(data){
-			// 名前
-			const $resultName = $('.js-result-name');
-			$resultName.text(`今の恵比寿の天気`);	
+		// 名前
+		const $resultName = $('.js-result-name');
+		$resultName.text(`今の${data.name}の天気`);	
 
-			// 気温
-			const $resultTemp = $('.js-result-temp');
-			$resultTemp.text(`${data.main.temp}℃`);
+		// 気温
+		const $resultTemp = $('.js-result-temp');
+		$resultTemp.text(`${data.main.temp}℃`);
 
-			// 天気アイコン
-			const $resultIcon = $('.js-result-icon');
-			const iconCode = data.weather[0].icon;
-			const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+		// 天気アイコン
+		const $resultIcon = $('.js-result-icon');
+		const iconCode = data.weather[0].icon;
+		const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-			$resultIcon.attr('src', iconUrl);
+		$resultIcon.attr('src', iconUrl);
 	}
 
 });
